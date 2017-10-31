@@ -12,7 +12,7 @@ var lazyImageCSS = require('gulp-lazyimagecss');  // 自动为图片样式添加
 var minifyCSS = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
-var tmtsprite = require('gulp-tmtsprite');   // 雪碧图合并
+// var tmtsprite = require('gulp-tmtsprite');   // 雪碧图合并
 var ejshelper = require('tmt-ejs-helper');
 var postcss = require('gulp-postcss');  // CSS 预处理
 var postcssPxtorem = require('postcss-pxtorem'); // 转换 px 为 rem
@@ -101,7 +101,7 @@ module.exports = function (gulp, config) {
         return gulp.src(paths.src.less)
             .pipe(less({relativeUrls: true}))
             .pipe(lazyImageCSS({imagePath: lazyDir}))
-            .pipe(tmtsprite({margin: 4}))
+            // .pipe(tmtsprite({margin: 4}))
             .pipe(gulpif('*.png', gulp.dest(paths.tmp.sprite), gulp.dest(paths.tmp.css)));
     }
 
@@ -111,7 +111,7 @@ module.exports = function (gulp, config) {
             .pipe(sass())
             .on('error', sass.logError)
             .pipe(lazyImageCSS({imagePath: lazyDir}))
-            .pipe(tmtsprite({margin: 4}))
+            // .pipe(tmtsprite({margin: 4}))
             .pipe(gulpif('*.png', gulp.dest(paths.tmp.sprite), gulp.dest(paths.tmp.css)));
     }
 
