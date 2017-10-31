@@ -1,0 +1,48 @@
+{
+  "name": "generator-xbt",
+  "version": "0.0.1",
+  "description": "Yeoman generator for xbt",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "git://github.com/xbhub/generator-xbt",
+  "homepage": "https://github.com/xbhub/generator-xbt",
+  "bugs": "https://github.com/xbhub/generator-xbt/issues",
+  "author": {
+    "name": "jory",
+    "email": "jorycn@163.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "t",
+    "xbt",
+    "gulp",
+    "f2e",
+    "yeoman-generator",
+    "retina",
+    "sprite",
+    "rem",
+    "webp",
+    "reversion",
+    "2x",
+    "xbhub"
+  ],
+  "dependencies": {
+    "chalk": "~0.4.0",
+    "del": "~2.2.0",
+    "yeoman-generator": "^0.16.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}

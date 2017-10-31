@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>h5 boilerplate</title>
+    <link rel="stylesheet" href="http://xian.qq.com/js/common/swiper/swiper-4.0.2.css">
+    <link rel="stylesheet" href="../css/style-mobile.css">
+    <script src="http://xian.qq.com/js/common/flexible/flexible.js"></script>
+</head>
+<body>
+    <div class="loading">
+      <div class="tour_mob_ball_1"></div>
+      <div class="spinner">
+        <div class="spinner-container container-1">
+          <div class="circle-1"></div>
+          <div class="circle-2"></div>
+          <div class="circle-3"></div>
+          <div class="circle-4"></div>
+        </div>
+        <div class="spinner-container container-2">
+          <div class="circle-1"></div>
+          <div class="circle-2"></div>
+          <div class="circle-3"></div>
+          <div class="circle-4"></div>
+        </div>
+        <div class="spinner-container container-3">
+          <div class="circle-1"></div>
+          <div class="circle-2"></div>
+          <div class="circle-3"></div>
+          <div class="circle-4"></div>
+        </div>
+      </div>
+      <div class="msg">
+        <p>建议在WIFI下使用</p>
+        <p>玩命加载中，请耐心等待</p>
+      </div>
+    </div>
+    <div class="page">
+        <div class="page__bd swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-color: red;"></div>
+                <div class="swiper-slide" style="background-color: green;"></div>
+                <div class="swiper-slide" style="background-color: blue;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="next"></div>
+
+    <script src="http://xian.qq.com/js/common/zepto/zepto-1.2.0.js"></script>
+    <script src="http://xian.qq.com/js/common/swiper/swiper-3.3.1.min.js"></script>
+    <script>
+        window.shareData = {
+            "imgUrl": "http://mat1.gtimg.com/xian/2015images/2015news/20150323qingming/share.jpg",
+            "imgWidth": 180,
+            "imgHeight": 180,
+            "link": location.href,
+            "title": "2015清明公祭黄帝-腾讯大秦网特别策划",
+            "content": "2015清明公祭黄帝-腾讯大秦网特别策划"
+        };
+        window.dev = 0;
+        window.app = {
+            initSwiper: function(){
+                window.ms = new Swiper('.swiper-container', {
+                    direction: 'vertical',
+                    initialSlide: window.dev
+                })
+            },
+            init: function(){
+                this.initSwiper();
+                // start code
+            }
+        };
+        function imgLoder(imgs, callback){
+            var loadedCount = 0;
+            $.each(imgs, function(index, val){
+                var img = new Image();
+                img.src = val;
+                img.onload = function(){
+                loadedCount++;
+                if (loadedCount == imgs.length) {
+                    callback();
+                }
+                };
+            })
+        }
+        imgLoder([
+            'http://mat1.gtimg.com/xian/2017images/tour/10/gjmls/p13_pic.png',
+            'http://mat1.gtimg.com/xian/2017images/tour/10/gjmls/p7_map.png',
+            'http://mat1.gtimg.com/xian/2017images/tour/10/gjmls/p6_rou.png'
+            
+        ], function(){
+            $('.loading').hide();
+            $(".page").show();
+            window.app.init();            
+        })
+    </script>
+    <script>
+        function onBridgeReady() {
+            //分享至好友
+            WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+            WeixinJSBridge.invoke('sendAppMessage', {
+            "img_url": window.shareData.imgUrl,
+            "link": window.shareData.link,
+            "desc": window.shareData.content,
+            "title": window.shareData.title
+            }, function (res) {
+            })
+        });
+
+        //分享至朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+            WeixinJSBridge.invoke('shareTimeline', {
+            "img_url": window.shareData.imgUrl,
+            "img_width": window.shareData.imgWidth,
+            "img_height": window.shareData.imgHeight,
+            "link": window.shareData.link,
+            "desc": window.shareData.content,
+            "title": window.shareData.title
+            }, function (res) {
+            });
+        });
+
+        //分享至微博
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+            WeixinJSBridge.invoke('shareWeibo',{
+                "content": window.shareData.content,
+                "url": window.shareData.link
+                }, function(res) {
+            });
+        });
+        }
+
+        function runBridgeReady() {
+            if (typeof WeixinJSBridge == "undefined") {
+                if(document.addEventListener) {
+                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                }
+            } else {
+                onBridgeReady();
+            }
+        }
+        runBridgeReady();
+    </script>
+    <script src="http://pingjs.qq.com/ping.js"></script>
+    <script>if(typeof(pgvMain) == 'function')pgvMain();</script>
+</body>
+</html>
