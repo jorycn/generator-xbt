@@ -18,6 +18,7 @@
     "gulp-ftp": "^1.1.0",
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "^2.4.0",
+    "gulp-inline-source": "^3.1.0",
     "gulp-lazyimagecss": "^2.0.0",
     "gulp-less": "^3.0.5",
     "gulp-postcss": "^6.0.1",
@@ -43,15 +44,15 @@
     "rd": "^0.0.2",
     "svg-to-png": "^3.1.2",
     "through2": "^2.0.3",
-    "xbt-ejs-helper": "^0.0.3",
     "vinyl": "^2.0.1",
     "webpack": "^2.2.1",
-    "webpack-stream": "^3.2.0"
+    "webpack-stream": "^3.2.0",
+    "xbt-ejs-helper": "^0.0.3"
   },
   "description": "A f2e project workflow based on Gulp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/weixin/tmt-workflow"
+    "url": "https://github.com/xbhub/xb-workflow"
   },
   "keywords": [
     "Workflow",
