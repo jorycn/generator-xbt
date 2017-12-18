@@ -13,18 +13,17 @@ var minifyCSS = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 // var tmtsprite = require('gulp-tmtsprite');   // 雪碧图合并
-var ejshelper = require('tmt-ejs-helper');
 var postcss = require('gulp-postcss');  // CSS 预处理
 var postcssPxtorem = require('postcss-pxtorem'); // 转换 px 为 rem
 var postcssAutoprefixer = require('autoprefixer');
-var posthtml = require('gulp-posthtml');
-var posthtmlPx2rem = require('posthtml-px2rem');
 var RevAll = require('gulp-rev-all');   // reversion
 var revDel = require('gulp-rev-delete-original');
 var sass = require('gulp-sass');
 var changed = require('./common/changed')();
 var webpack = require('webpack-stream');
 var babel = require('gulp-babel');
+var inlinesource = require('gulp-inline-source'); // 内置css
+var xbtHelper = require('./lib/helper');
 
 var webpackConfigPath = path.join(process.cwd(), 'webpack.config.js');
 var webpackConfig; // webpack 配置
@@ -75,7 +74,7 @@ module.exports = function (gulp, config) {
         postcssOption = [
             postcssAutoprefixer({browsers: ['last 5 versions']}),
             postcssPxtorem({
-                root_value: '20', // 基准值 html{ font-zise: 20px; }
+                root_value: '75', // 基准值 html{ font-zise: 20px; }
                 prop_white_list: [], // 对所有 px 值生效
                 minPixelValue: 2 // 忽略 1px 值
             })
@@ -108,7 +107,9 @@ module.exports = function (gulp, config) {
     //编译 less
     function compileSass() {
         return gulp.src(paths.src.sass)
-            .pipe(sass())
+            .pipe(sass({
+                outputStyle: 'compressed'
+            }))
             .on('error', sass.logError)
             .pipe(lazyImageCSS({imagePath: lazyDir}))
             // .pipe(tmtsprite({margin: 4}))
@@ -177,19 +178,19 @@ module.exports = function (gulp, config) {
     //html 编译
     function compileHtml() {
         return gulp.src(paths.src.html)
-            .pipe(ejs(ejshelper()))
-            .pipe(gulpif(
-                config.supportREM,
-                posthtml(
-                    posthtmlPx2rem({
-                        rootValue: 20,
-                        minPixelValue: 2
-                    })
-                ))
-            )
+            .pipe(ejs(xbtHelper()))
             .pipe(gulp.dest(paths.tmp.html))
             .pipe(usemin())
-            .pipe(gulp.dest(paths.tmp.html));
+            .pipe(gulp.dest(paths.tmp.html));          
+    }
+
+    //单行样式脚本
+    function compileInlineSource() {
+        return gulp.src('./tmp/html/*.html')
+            .pipe(inlinesource({
+                compress: false
+            }))
+            .pipe(gulp.dest(paths.tmp.html));          
     }
 
 
@@ -318,6 +319,7 @@ module.exports = function (gulp, config) {
         imageminSprite,
         miniCSS,
         compileHtml,
+        compileInlineSource,
         reversion,
         supportWebp(),
         findChanged,

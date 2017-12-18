@@ -1,6 +1,6 @@
 {
   "name": "generator-xbt",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Yeoman generator for xbt",
   "license": "MIT",
   "main": "app/index.js",
