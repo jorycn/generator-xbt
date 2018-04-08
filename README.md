@@ -32,10 +32,12 @@
 
 ## 快速开始
 
+```bash
   1. `npm install gulpjs/gulp#4.0 -g`
   2. `npm install -g yo`
   3. `npm install -g generator-xbt`
   4. `yo xbt`
+```
 
 ## 配置文件 `.tmtworkflowrc`
 
@@ -80,6 +82,7 @@ _如：FTP 配置信息、开启 WebP功能，开启 REM 支持等。_
 
   "reversion": false                    // 开启 新文件名 md5 功能
 }
+```
 
 ## License
 
