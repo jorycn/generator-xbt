@@ -1,12 +1,12 @@
 {
-  "name": "generator-xbt",
+  "name": "generator-xflow",
   "version": "0.0.8",
-  "description": "Yeoman generator for xbt",
+  "description": "Yeoman generator for xflow",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "git://github.com/jorycn/generator-xbt",
-  "homepage": "https://github.com/jorycn/generator-xbt",
-  "bugs": "https://github.com/jorycn/generator-xbt/issues",
+  "repository": "git://github.com/jorycn/generator-xflow",
+  "homepage": "https://github.com/jorycn/generator-xflow",
+  "bugs": "https://github.com/jorycn/generator-xflow/issues",
   "author": {
     "name": "jory",
     "email": "jorycn@163.com"
@@ -21,7 +21,7 @@
     "app"
   ],
   "keywords": [
-    "xbworkflow",
+    "xflow",
     "xbt",
     "gulp",
     "f2e",

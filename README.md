@@ -1,7 +1,7 @@
-# xbt workflow generator
+# xflow workflow generator
 
 > 项目基于 Tencent/tmt-workflow 构建
-> xbt是基于gulp构建的前端工作流, 其不限于以下功能：
+> xflow是基于gulp构建的前端工作流, 其不限于以下功能：
 
 ## 功能特性
 
@@ -35,8 +35,8 @@
 ```bash
   1. `npm install gulpjs/gulp#4.0 -g`
   2. `npm install -g yo`
-  3. `npm install -g generator-xbt`
-  4. `yo xbt`
+  3. `npm install -g generator-xflow`
+  4. `yo xflow`
 ```
 
 ## 配置文件 `.tmtworkflowrc`
