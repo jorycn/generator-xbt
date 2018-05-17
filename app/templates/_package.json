@@ -35,6 +35,7 @@
     "gulp-util": "^3.0.7",
     "gulp-webp": "^2.3.0",
     "gulp-zip": "^3.2.0",
+    "gulp-posthtml": "^3.0.4",
     "imagemin-pngquant": "^4.2.2",
     "lodash": "^4.5.1",
     "postcss-pxtorem": "^3.3.1",
