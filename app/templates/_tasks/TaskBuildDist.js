@@ -18,7 +18,7 @@ var postcssPxtorem = require('postcss-pxtorem'); // 转换 px 为 rem
 var postcssAutoprefixer = require('autoprefixer');
 var RevAll = require('gulp-rev-all');   // reversion
 var revDel = require('gulp-rev-delete-original');
-var sass = require('gulp-sass');
+// var sass = require('gulp-sass');
 var changed = require('./common/changed')();
 var webpack = require('webpack-stream');
 var babel = require('gulp-babel');
@@ -41,7 +41,7 @@ var paths = {
         js: './src/js/**/*.js',
         media: './src/media/**/*',
         less: './src/css/style-*.less',
-        sass: './src/css/style-*.scss',
+        // sass: './src/css/style-*.scss',
         html: ['./src/html/**/*.html', '!./src/html/_*/**.html'],
         htmlAll: './src/html/**/*',
         php: './src/**/*.php'
@@ -105,16 +105,16 @@ module.exports = function (gulp, config) {
     }
 
     //编译 less
-    function compileSass() {
-        return gulp.src(paths.src.sass)
-            .pipe(sass({
-                outputStyle: 'compressed'
-            }))
-            .on('error', sass.logError)
-            .pipe(lazyImageCSS({imagePath: lazyDir}))
-            // .pipe(tmtsprite({margin: 4}))
-            .pipe(gulpif('*.png', gulp.dest(paths.tmp.sprite), gulp.dest(paths.tmp.css)));
-    }
+    // function compileSass() {
+    //     return gulp.src(paths.src.sass)
+    //         .pipe(sass({
+    //             outputStyle: 'compressed'
+    //         }))
+    //         .on('error', sass.logError)
+    //         .pipe(lazyImageCSS({imagePath: lazyDir}))
+    //         // .pipe(tmtsprite({margin: 4}))
+    //         .pipe(gulpif('*.png', gulp.dest(paths.tmp.sprite), gulp.dest(paths.tmp.css)));
+    // }
 
     //自动补全
     function compileAutoprefixer() {
@@ -181,7 +181,7 @@ module.exports = function (gulp, config) {
             .pipe(ejs(xbtHelper()))
             .pipe(gulp.dest(paths.tmp.html))
             .pipe(usemin())
-            .pipe(gulp.dest(paths.tmp.html));          
+            .pipe(gulp.dest(paths.tmp.html));
     }
 
     //单行样式脚本
@@ -190,7 +190,7 @@ module.exports = function (gulp, config) {
             .pipe(inlinesource({
                 compress: false
             }))
-            .pipe(gulp.dest(paths.tmp.html));          
+            .pipe(gulp.dest(paths.tmp.html));
     }
 
 
@@ -310,7 +310,7 @@ module.exports = function (gulp, config) {
         delDist,
         gulp.parallel(
             compileLess,
-            compileSass,
+            // compileSass,
             imageminImg,
             copyMedia,
             compileJs

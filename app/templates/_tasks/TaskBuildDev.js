@@ -9,7 +9,7 @@ var bs = require('browser-sync').create();  // 自动刷新浏览器
 var lazyImageCSS = require('gulp-lazyimagecss');  // 自动为图片样式添加 宽/高/background-size 属性
 var postcss = require('gulp-postcss');   // CSS 预处理
 var posthtml = require('gulp-posthtml');  // HTML 预处理
-var sass = require('gulp-sass');
+// var sass = require('gulp-sass');
 var webpack = require('webpack-stream');
 var babel = require('gulp-babel');
 var xbtHelper = require('./lib/helper');
@@ -32,8 +32,8 @@ var paths = {
         media: './src/media/**/*',
         less: './src/css/style-*.less',
         lessAll: './src/css/**/*.less',
-        sass: './src/css/style-*.scss',
-        sassAll: './src/css/**/*.scss',
+        // sass: './src/css/style-*.scss',
+        // sassAll: './src/css/**/*.scss',
         html: ['./src/html/**/*.html', '!./src/html/_*/**.html', '!./src/html/_*/**/**.html'],
         htmlAll: './src/html/**/*.html'
     },
@@ -99,16 +99,16 @@ module.exports = function (gulp, config) {
     }
 
     //编译 sass
-    function compileSass() {
-        return gulp.src(paths.src.sass)
-            .pipe(sass())
-            .on('error', sass.logError)
-            .pipe(lazyImageCSS({imagePath: lazyDir}))
-            .pipe(gulp.dest(paths.dev.css))
-            .on('data', function () {
-            })
-            .on('end', reloadHandler)
-    }
+    // function compileSass() {
+    //     return gulp.src(paths.src.sass)
+    //         .pipe(sass())
+    //         .on('error', sass.logError)
+    //         .pipe(lazyImageCSS({imagePath: lazyDir}))
+    //         .pipe(gulp.dest(paths.dev.css))
+    //         .on('data', function () {
+    //         })
+    //         .on('end', reloadHandler)
+    // }
 
     //编译 html
     function compileHtml() {
@@ -215,7 +215,7 @@ module.exports = function (gulp, config) {
                     if (ext === '.less') {
                         compileLess();
                     } else {
-                        compileSass();
+                        // compileSass();
                     }
                 }
 
@@ -250,7 +250,7 @@ module.exports = function (gulp, config) {
                 paths.src.js,
                 paths.src.media,
                 paths.src.lessAll,
-                paths.src.sassAll,
+                // paths.src.sassAll,
                 paths.src.htmlAll
             ],
             {ignored: /[\/\\]\./}
@@ -289,7 +289,7 @@ module.exports = function (gulp, config) {
             // copyJs,
             copyMedia,
             compileLess,
-            compileSass,
+            // compileSass,
             compileHtml
         ),
         gulp.parallel(
