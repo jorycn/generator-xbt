@@ -1,5 +1,4 @@
 
-@import "lib/lib-mixins";
 @import "lib/lib-reset";
 @import "components/loading";
 
@@ -13,13 +12,13 @@ html,body,.page,.page__bd{
 .next{
     background: url(http://mat1.gtimg.com/xian/2016images/2016gov/20160228police/back.png) no-repeat;
     background-size: 100%;
-    width: px2em(75px);
-    height: px2em(42px);
+    width: 1rem /* 75/75 */;
+    height: .56rem /* 42/75 */;
     position: fixed;
     left: 50%;
     bottom: 3%;
     z-index: 999999;
-    margin-left: -px2em(37.5);
+    margin-left: .5rem /* 37.5/75 */;
     -webkit-animation: next 1.5s infinite alternate;
 }
 @keyframes next{
