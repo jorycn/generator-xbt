@@ -231,7 +231,7 @@ module.exports = function (gulp, config) {
                 .pipe(revDel({
                     exclude: /(.html|.htm)$/
                 }))
-                .pipe(revAll.manifestFile())
+                // .pipe(revAll.manifestFile())
                 .pipe(gulp.dest(paths.tmp.dir));
         } else {
             cb();

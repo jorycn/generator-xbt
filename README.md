@@ -32,6 +32,8 @@
 
 ## 快速开始
 
+> 推荐环境：nodejs:8.11.2, npm: 5.6.0
+
 ```bash
   1. `npm install gulpjs/gulp#4.0 -g`
   2. `npm install -g yo`
